@@ -1,4 +1,3 @@
-const AnswersModel = require("./models/answersModel.js");
 const dataOptions = require("./dataAcces.js");
 const QuestionsModel = require("./models/questionModel.js")
 
@@ -25,7 +24,6 @@ async function generateSummary() {
         summary.push(0);
     }
 
-
     for(let i = 0; i < rawAnswers.length; i++) {
         for(let x = 0; x < rawAnswers[i].length; x++) {
             if(rawAnswers[i][x].question == ruler) {
@@ -37,7 +35,6 @@ async function generateSummary() {
     }
 
     return summary;
-
 }
 
 module.exports.generateSummary = generateSummary;
