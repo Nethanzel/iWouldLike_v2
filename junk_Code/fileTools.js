@@ -1,7 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-
-
 let directories = 0;
 
 const getAllFiles = function(dirPath, arrayOfFiles) {
@@ -45,7 +43,6 @@ const copy = function(src, dest) {
 	oldFile.pipe(newFile);
 };
 
-
 const mkdir = function(dir) {
 	// making directory without exception if exists
 	try {
@@ -56,6 +53,10 @@ const mkdir = function(dir) {
 		}
 	}
 };
+
+const readFile = (path) => {
+    return fs.readFileSync(path, {encoding: "utf-8"})
+}
 
 class fileOptions {
 
@@ -118,6 +119,10 @@ class fileOptions {
             return stat.size;
         } else return 0
         
+    }
+
+    readFile (path) {
+        return fs.readFileSync(path, {encoding: "utf-8"});
     }
 
     delete (path) {

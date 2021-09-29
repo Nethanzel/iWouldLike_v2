@@ -7,6 +7,7 @@ const fs = require("fs");
 const sFavicon = require("serve-favicon");
 
 require("./src/data/dataAcces");
+require("./src/mailer/index");
 
 const validation = require("./CrossCuttingConcerns/Auth/clientValidation.js");
 const routes = require("./src/api/Routes.js");
@@ -24,7 +25,6 @@ const service = express();
 service.set("PORT", process.env.PORT || 80);
 service.use(formidable());
 service.use(sFavicon(path.join(__dirname, "src/client/favicon.ico")))
-
 //
 const  cors = require("cors");
 service.use(cors({ origin: "*", exposedHeaders: "*" }));
