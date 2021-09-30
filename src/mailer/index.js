@@ -5,7 +5,7 @@ const eLog = require("../../CrossCuttingConcerns/Logs/logMod.js");
 
 let metaDate = dateConvert.formatDate(new Date());
 
-let template = fs.readFileSync(__dirname + "/templates/iWouldLike/summary.html", {encoding: "utf-8"});
+let template = fs.readFileSync(__dirname + "/Templates/iWouldLike/summary.html", {encoding: "utf-8"});
 
 let replacements = {
     today: `${metaDate.day.es} ${metaDate.intDay}, ${metaDate.month.es} del ${metaDate.year}`,
