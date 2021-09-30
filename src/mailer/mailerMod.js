@@ -18,7 +18,7 @@ async function sendMail(options) {
   var template = handlebars.compile(options.html);
   var htmlToSend = template(options.replacements);
 
-  let info = await transporter.sendMail({
+  await transporter.sendMail({
     from: options.from,
     to: options.to,
     subject: options.subject,
