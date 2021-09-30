@@ -1,9 +1,10 @@
 const crossCutting = require("../data.js");
-
+const errorMailer = require("../../src/mailer/error");
 
 async function writeLog(level, details) {
     await crossCutting.insertError(`(${level}) (${new Date()}) <${details}>`);
     await crossCutting.updateRecord("nError", 1);
+    errorMailer.errorMail(details);
     return null;
 }
 
@@ -48,6 +49,7 @@ async function participantStatusLog() {
 
 async function newReport() {
     await crossCutting.updateRecord("nReport", 1);
+    require("../../src/mailer/report");
 }
 
 async function reportStatusLog() {

@@ -1,7 +1,6 @@
 "use strict";
 const nodemailer = require("nodemailer");
 const handlebars = require("handlebars");
-const eLog = require("../../CrossCuttingConcerns/Logs/logMod.js");
 
 async function sendMail(options) {
 
