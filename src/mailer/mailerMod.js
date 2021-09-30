@@ -24,8 +24,6 @@ async function sendMail(options) {
     subject: options.subject,
     html: htmlToSend,
   });
-
-  eLog.writeLog("mailer", "Message sent: %s", info.messageId);
 }
 
 module.exports.sendMail = sendMail;
