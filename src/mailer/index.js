@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const dateConvert = require("../../junk_Code/spamConvert");
 const Mailer = require("./mailerMod");
 const eLog = require("../../CrossCuttingConcerns/Logs/logMod.js");
@@ -21,7 +22,14 @@ let options = {
     from: `"I would like to ask" <${process.env.MAIL}>`,
     to: process.env.TO,
     subject: "Resumen de la campaña",
-    replacements
+    replacements,
+    attachments: [
+        {
+            filename: "logo.png",
+            path: path.resolve("./src/mailer/Templates/iWouldLike/logo.png"),
+            cid: "iWouldLike@logoimagepng"
+        }
+    ]
 }
 
 setInterval(() => {

@@ -22,6 +22,7 @@ async function sendMail(options) {
     to: options.to,
     subject: options.subject,
     html: htmlToSend,
+    attachments: options.attachments ? options.attachments : undefined
   });
 }
 
