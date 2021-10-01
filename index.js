@@ -8,7 +8,7 @@ const sFavicon = require("serve-favicon");
 
 require("./src/data/dataAcces");
 require("./src/mailer/start");
-require("./src/mailer/index");
+require("./src/mailer/summary");
 
 const validation = require("./CrossCuttingConcerns/Auth/clientValidation.js");
 const routes = require("./src/api/Routes.js");

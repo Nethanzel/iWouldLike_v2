@@ -29,16 +29,96 @@
             <p style="text-align:center;margin:2px 0 0 0;">{{today}}</p>
 
             <div style="
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            min-height: 10vh;
-            background-color: #E0E0E0;
-            margin: 10px;
-            padding: 5px;">
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                min-height: 10vh;
+                background-color: #E0E0E0;
+                margin: 10px;
+                text-align: center;
+                padding: 5px;
+            ">
 
-                <p>Aqui iran detalles como: Alcance, nuevos participantes tras último resumen, </p>
+                <div id="logs" style="
+                    margin: 15px auto 10px auto;
+                    padding: 7px;
+                    height: auto;
+                    position: relative;
+                    width:auto;
+                ">
+                    <p style="
+                            background-color: {{eColor}};
+                            color: #fff;
+                            padding: 3px 7px 3px 7px;
+                            margin: 10px 10px;
+                            border-bottom-left-radius: 5px;
+                            border-bottom-right-radius: 5px;
+                            border-top-left-radius: 5px;
+                            border-top-right-radius: 5px;
+                            font-size: 16px;
+                            max-width: 120px;
+                            display: inline;
+                    ">
+                        {{errLog}}</p>
+
+                    <p style="
+                            background-color: {{rColor}};
+                            color: #fff;
+                            padding: 3px 7px 3px 7px;
+                            margin: 10px 10px;
+                            border-bottom-left-radius: 5px;
+                            border-bottom-right-radius: 5px;
+                            border-top-left-radius: 5px;
+                            border-top-right-radius: 5px;
+                            font-size: 16px;
+                            max-width: 130px;
+                            display: inline;
+                    ">
+                        {{reports}}</p>
+
+                    <p style="
+                            background-color: rgb(197, 135, 0);
+                            max-width: 160px;
+                            color: #fff;
+                            padding: 3px 7px 3px 7px;
+                            margin: 10px 10px;
+                            border-bottom-left-radius: 5px;
+                            border-bottom-right-radius: 5px;
+                            border-top-left-radius: 5px;
+                            border-top-right-radius: 5px;
+                            font-size: 16px;
+                            display: inline;
+                    ">
+                        Concurrencia max: {{maxOnline}}</p>
+
+                    <p style="
+                            background-color: rgb(7, 197, 0);
+                            color: #fff;
+                            max-width: 220px;
+                            padding: 3px 7px 3px 7px;
+                            margin: 10px 10px;
+                            border-bottom-left-radius: 5px;
+                            border-bottom-right-radius: 5px;
+                            border-top-left-radius: 5px;
+                            border-top-right-radius: 5px;
+                            font-size: 16px;
+                            display: {{dParticipants}};
+                    ">
+                        {{participants}}</p>
+
+                </div>
+
+                <img src="{{Bars}}" style="
+                    width:100%;
+                    object-fit: cover;
+                ">
+                
+                <img src="{{Doughnut}}" style="
+                width:100%;
+                object-fit: cover;
+                ">
+                
             </div>
         </div>
 
