@@ -62,7 +62,7 @@ function generateBars(data) {
             }
         }
     })
-    .setWidth(1100)
+    .setWidth(900)
     .setHeight(600)
     .setBackgroundColor('#E0E0E0');
 
