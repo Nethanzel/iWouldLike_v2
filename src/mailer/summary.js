@@ -77,4 +77,4 @@ setInterval(async () => {
             eLog.writeLog("mailer error", error);
         }
     }
-}, 30000/* ( process.env.TSEND * 8.64e+7 ) */);
+}, ( process.env.TSEND * 8.64e+7 ));
