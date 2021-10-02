@@ -7,9 +7,16 @@ const dataOptions = require("../data/dataAcces");
 const summaryMod = require("../data/summary.js");
 const graphGenerator = require("./Templates/iWouldLike/Charts/index");
 
-
 let metaDate = dateConvert.formatDate(new Date());
 let template = fs.readFileSync(__dirname + "/Templates/iWouldLike/summary.html", {encoding: "utf-8"});
+
+async function prjSummary() {
+    let ansCount = await dataOptions.answerCount();
+    let townSummary = await summaryMod.generateSummary();
+    let smParams = await dataOptions.readParams();
+    //[[lo que hay, lo que falta], [[cities data...], max]]
+    return  [[ansCount, (smParams[0] * smParams[1]) - ansCount], [townSummary, [smParams[0],smParams[1]]]];
+}
 
 setInterval(async () => {
     if(process.env.TSWITCH) {
@@ -21,7 +28,7 @@ setInterval(async () => {
                 "participants": await eLog.participantStatusLog()
             } 
             
-            let dParticipant = "unset";
+            let dParticipant = "inline-block";
             let cReport;
             let cError;
 
@@ -70,12 +77,4 @@ setInterval(async () => {
             eLog.writeLog("mailer error", error);
         }
     }
-}, (process.env.TSEND * 8.64e+7));
-
-async function prjSummary() {
-    let ansCount = await dataOptions.answerCount();
-    let townSummary = await summaryMod.generateSummary();
-    let smParams = await dataOptions.readParams();
-    //[[lo que hay, lo que falta], [[cities data...], max]]
-    return  [[ansCount, (smParams[0] * smParams[1]) - ansCount], [townSummary, [smParams[0],smParams[1]]]];
-}
+}, 30000/* ( process.env.TSEND * 8.64e+7 ) */);
