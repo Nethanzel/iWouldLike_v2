@@ -134,6 +134,7 @@ async function updateRecord(selector, nValue) {
         logsMod.writeLog("dbLogging", error);
     }
 }
+
 //==================================================================================================
 async function getErrors() {
     try {
@@ -159,7 +160,6 @@ async function insertError(nError) {
         logsMod.writeLog("dbLogging", error);
     }
 }
-
 
 module.exports.getTokens = getTokens;
 module.exports.insertToken = insertToken;

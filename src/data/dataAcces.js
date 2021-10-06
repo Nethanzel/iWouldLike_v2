@@ -77,6 +77,7 @@ function qUpdate() {
     qCache = getQuestions()
 }
 
+//From the dashboard, sent the project configurations
 async function updateParams(newParams) {
 
     let max = newParams.max;
@@ -89,7 +90,15 @@ async function updateParams(newParams) {
         dist = x[1];
     }
 
-    let nParams = [max, dist, ruler]
+    /* OJO AQUI */
+/*     let projectConfigs = {
+        to: newParams.monitors,
+        timeToSent: newParams.timeToSent,
+        tSwitch: newParams.tSwitch
+    } */
+    /* HASTA AQUI */
+
+    let nParams = [max, dist, ruler, /* projectConfigs */]
     let res = await updateRecord("params", nParams);
 
     if(res.n != 0) {

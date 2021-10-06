@@ -262,7 +262,6 @@ routes.delete("/project", async (req, res) => {
                 return res.status(503).send();
             }
             return res.status(503).send();
-
         } else res.status(401).send()
     } catch (error) {
         eLog.writeLog("remote error", error);
