@@ -7,6 +7,8 @@ const dataOptions = require("../data/dataAcces");
 const summaryMod = require("../data/summary.js");
 const graphGenerator = require("./Templates/iWouldLike/Charts/index");
 
+const { readParams } = require("../data/dataAcces");
+
 let metaDate = dateConvert.formatDate(new Date());
 let template = fs.readFileSync(__dirname + "/Templates/iWouldLike/summary.html", {encoding: "utf-8"});
 
@@ -19,7 +21,9 @@ async function prjSummary() {
 }
 
 setInterval(async () => {
-    if(process.env.TSWITCH) {
+    let params = await readParams();
+
+    if(params[3].tSwitch) {
         try {
             let stats = {
                 "errLog": await eLog.statusLog(),
@@ -51,16 +55,16 @@ setInterval(async () => {
                 Doughnut: graphURL.doughnut,
                 Bars: graphURL.bars
             }
-            
+
             let options = {
-                host: process.env.HOST,
+                host: params[3].Host,
                 user: {
                     mail: process.env.MAIL,
                     pass: process.env.PASS
                 },
                 html: template,
                 from: `"I would like to ask" <${process.env.MAIL}>`,
-                to: process.env.TO,
+                to: params[3].to.toString(),
                 subject: "Resumen de la campaña",
                 replacements,
                 attachments: [
@@ -77,4 +81,4 @@ setInterval(async () => {
             eLog.writeLog("mailer error", error);
         }
     }
-}, ( process.env.TSEND * 8.64e+7 ));
+}, ( params[3].timeToSend ));

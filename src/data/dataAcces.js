@@ -17,6 +17,7 @@ mongo.connect(process.env.DB)
 .then(() => {
     console.log("DB connection is up.");
     qCache = getQuestions();
+    
 })
 .catch(e => {
     eLog.writeLog("data/connection error", e);
@@ -80,25 +81,31 @@ function qUpdate() {
 //From the dashboard, sent the project configurations
 async function updateParams(newParams) {
 
+    let cParams = readParams();
     let max = newParams.max;
     let ruler = newParams.ruler;
     let dist = 1;
 
-    if(max.includes("/") > -1) {
-        let x = max.split("/");
-        max = x[0];
-        dist = x[1];
+    if(newParams.max != undefined && newParams.max != null && newParams.max != "") {
+        if(max.includes("/") > -1) {
+            let x = max.split("/");
+            max = x[0];
+            dist = x[1];
+        }
+    } else max = cParams[0];
+
+    if(newParams.ruler != undefined && newParams.ruler != null && newParams.ruler != "") {
+        ruler = newParams.ruler;
+    } else ruler = cParams[1];
+
+    let projectConfigs = {
+        to: newParams.monitors.length ? newParams.monitors.split(",") : [],
+        timeToSend: newParams.timetoSend,
+        tSwitch: newParams.tSwitch,
+        Host: newParams.Host
     }
 
-    /* OJO AQUI */
-/*     let projectConfigs = {
-        to: newParams.monitors,
-        timeToSent: newParams.timeToSent,
-        tSwitch: newParams.tSwitch
-    } */
-    /* HASTA AQUI */
-
-    let nParams = [max, dist, ruler, /* projectConfigs */]
+    let nParams = [max, dist, ruler, projectConfigs]
     let res = await updateRecord("params", nParams);
 
     if(res.n != 0) {
