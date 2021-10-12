@@ -9,7 +9,7 @@ let metaDate = dateConvert.formatDate(new Date());
 let template = fs.readFileSync(__dirname + "/Templates/iWouldLike/start.html", {encoding: "utf-8"});
 
 let replacements = {
-    tSpan: `${process.env.TSEND} dia(s)`,
+    tSpan: `${process.env.TSEND * 24} horas(s)`,
     tMail: process.env.MAIL,
     tReceibers: process.env.TO,
     tSummary: process.env.TSWITCH ? "Habilitados" : "Desactivados",
