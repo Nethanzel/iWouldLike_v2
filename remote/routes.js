@@ -10,6 +10,7 @@ const fs = require("fs");
 const validation = require("../CrossCuttingConcerns/Auth/clientValidation.js");
 const eLog = require("../CrossCuttingConcerns/Logs/logMod.js");
 const { qUpdate, updateParams, n_Backup, project_clear } = require("../src/data/dataAcces");
+const { newProjectMail } = require("../src/mailer/newProject.js");
 
 routes.get("/stats", async (req, res) => {
     try {
@@ -255,7 +256,8 @@ routes.delete("/project", async (req, res) => {
                 if(dlt[0].n > 0 && dlt[1].n > 0) {
                     let cproject = await eLog.newProject(project); //set the new project name
                     if(cproject.n == 1) {
-                        return res.status(204).send();
+                        res.status(204).send();
+                        return newProjectMail(project); //Send the mail with the new project
                     }
                     return res.status(503).send();
                 }
