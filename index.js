@@ -7,7 +7,7 @@ const fs = require("fs");
 const sFavicon = require("serve-favicon");
 
 require("./src/data/dataAcces");
-require("./src/mailer/start");
+//require("./src/mailer/start");
 require("./src/mailer/summary");
 
 const validation = require("./CrossCuttingConcerns/Auth/clientValidation.js");
@@ -18,7 +18,6 @@ const starRoutes = require("./remote/StarDrive/routes.js");
 const CrossCutting = path.join(__dirname, "CrossCuttingConcerns/");
 const eLog = require("./CrossCuttingConcerns/Logs/logMod.js");
 const { clearUserToken } = require("./src/data/dataAcces.js");
-
 
 let onlineCount = 0;
 const service = express();
