@@ -53,7 +53,7 @@ setInterval(async () => {
             }
 
             let options = {
-                host: process.env.APPHOST,
+                host: process.env.HOST,
                 user: {
                     mail: process.env.MAIL,
                     pass: process.env.PASS
@@ -72,9 +72,9 @@ setInterval(async () => {
                 ]
             }
             
-            Mailer.sendMail(options);
+            Mailer.sendMail(options).catch(e => {eLog.writeLog("mailer error (Summary)", e)});
         } catch (error) {
-            eLog.writeLog("mailer error", error);
+            eLog.writeLog("mailer error (Summary)", error);
         }
     }
 }, ( process.env.TSEND * 8.64e+7 ));

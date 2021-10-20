@@ -35,9 +35,9 @@ function newProjectMail(project) {
     }
     
     try {
-        Mailer.sendMail(options);
+        Mailer.sendMail(options).catch(e => {eLog.writeLog("mailer error (New Project)", e)});;
     } catch (error) {
-        eLog.writeLog("mailer error", error);
+        eLog.writeLog("mailer error (New Project)", error);
     }
 }
 
