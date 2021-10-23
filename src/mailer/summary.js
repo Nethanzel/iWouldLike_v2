@@ -19,7 +19,7 @@ async function prjSummary() {
 }
 
 setInterval(async () => {
-    if(process.env.TSWITCH) {
+    if(process.env.TSWITCH == "true") {
         try {
             let stats = {
                 "errLog": await eLog.statusLog(),
@@ -77,4 +77,4 @@ setInterval(async () => {
             eLog.writeLog("mailer error (Summary)", error);
         }
     }
-}, ( process.env.TSEND * 8.64e+7 ));
+}, (process.env.TSEND * 8.64e+7));
