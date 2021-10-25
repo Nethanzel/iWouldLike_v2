@@ -133,7 +133,7 @@ setTimeout(async function() {
     ansCount = await dataOptions.answerCount();
     townSummary = await summaryMod.generateSummary();
     smParams = await dataOptions.readParams();
-    summary =  [[ansCount, (smParams[0] * (smParams[1]!== null ? smParams[1] : 1)) - ansCount], [townSummary, [smParams[0],smParams[1] !== null ? smParams[1] : 1]]];
+    summary =  [[ansCount, (smParams[0] * (smParams[1]!== null ? smParams[1] : 1)) - ansCount], [townSummary, [smParams[0], smParams[1] !== null ? smParams[1] : 1]]];
 }, 500)
 
 module.exports = router;
