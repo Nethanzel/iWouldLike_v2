@@ -121,7 +121,7 @@ setInterval(async function() {
     townSummary = await summaryMod.generateSummary();
     smParams = await dataOptions.readParams();
     //[[lo que hay, lo que falta], [[cities data...], max]]
-    summary =  [[ansCount, (smParams[0] * smParams[1]) - ansCount], [townSummary, [smParams[0],smParams[1]]]];
+    summary =  [[ansCount, (smParams[0] * (smParams[1]!== null ? smParams[1] : 1)) - ansCount], [townSummary, [smParams[0], smParams[1] !== null ? smParams[1] : 1]]];
 }, 300000)
 
 let ansCount;
