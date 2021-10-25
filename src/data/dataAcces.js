@@ -16,8 +16,7 @@ mongo.set('useUnifiedTopology', true);
 mongo.connect(process.env.DB) 
 .then(() => {
     console.log("DB connection is up.");
-    qCache = getQuestions();
-    
+    qCache = getQuestions(); 
 })
 .catch(e => {
     eLog.writeLog("data/connection error", e);
