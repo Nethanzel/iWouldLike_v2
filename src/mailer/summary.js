@@ -15,11 +15,11 @@ async function prjSummary() {
     let townSummary = await summaryMod.generateSummary();
     let smParams = await dataOptions.readParams();
     //[[lo que hay, lo que falta], [[cities data...], max]]
-    return  [[ansCount, (smParams[0] * smParams[1]) - ansCount], [townSummary, [smParams[0],smParams[1]]]];
+    return  [[ansCount, (smParams[0] * (smParams[1]!== null ? smParams[1] : 1)) - ansCount], [townSummary, [smParams[0], smParams[1] !== null ? smParams[1] : 1]]];
 }
 
 setInterval(async () => {
-    if(process.env.TSWITCH) {
+    if(process.env.TSWITCH == "true") {
         try {
             let stats = {
                 "errLog": await eLog.statusLog(),
@@ -53,7 +53,7 @@ setInterval(async () => {
             }
 
             let options = {
-                host: process.env.APPHOST,
+                host: process.env.HOST,
                 user: {
                     mail: process.env.MAIL,
                     pass: process.env.PASS
@@ -72,9 +72,9 @@ setInterval(async () => {
                 ]
             }
             
-            Mailer.sendMail(options);
+            Mailer.sendMail(options).catch(e => {eLog.writeLog("mailer error (Summary)", e)});
         } catch (error) {
-            eLog.writeLog("mailer error", error);
+            eLog.writeLog("mailer error (Summary)", error);
         }
     }
-}, ( process.env.TSEND * 8.64e+7 ));
+}, (process.env.TSEND * 8.64e+7));

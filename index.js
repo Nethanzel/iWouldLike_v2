@@ -19,7 +19,6 @@ const CrossCutting = path.join(__dirname, "CrossCuttingConcerns/");
 const eLog = require("./CrossCuttingConcerns/Logs/logMod.js");
 const { clearUserToken } = require("./src/data/dataAcces.js");
 
-
 let onlineCount = 0;
 const service = express();
 

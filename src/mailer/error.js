@@ -35,9 +35,9 @@ function errorMail(err) {
     }
     
     try {
-        Mailer.sendMail(options);
+        Mailer.sendMail(options).catch(e => {eLog.writeLog("mailer error (Error)", e)});;
     } catch (error) {
-        eLog.writeLog("mailer error", error);
+        eLog.writeLog("mailer error (Error)", error);
     }
 }
 

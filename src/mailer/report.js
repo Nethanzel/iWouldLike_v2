@@ -34,7 +34,7 @@ let options = {
 }
 
 try {
-    Mailer.sendMail(options);
+    Mailer.sendMail(options).catch(e => {eLog.writeLog("mailer error (Report)", e)});;
 } catch (error) {
-    eLog.writeLog("mailer error", error);
+    eLog.writeLog("mailer error (Report)", error);
 }

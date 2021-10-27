@@ -12,7 +12,7 @@ let replacements = {
     tSpan: `${process.env.TSEND * 24} horas(s)`,
     tMail: process.env.MAIL,
     tReceibers: process.env.TO,
-    tSummary: process.env.TSWITCH ? "Habilitados" : "Desactivados",
+    tSummary: process.env.TSWITCH == "true" ? "Habilitados" : "Desactivados",
     deployDate: `${metaDate.day.es} ${metaDate.intDay}, ${metaDate.month.es} del ${metaDate.year}, 
         a las ${new Date().getHours() <= 9 ? "0" + new Date().getHours() : new Date().getHours()}:${new Date().getMinutes() <= 9 ? "0" + new Date().getMinutes() : new Date().getMinutes()} (hora del servidor).`,
     tApp: process.env.APPHOST
@@ -39,7 +39,7 @@ let options = {
 }
 
 try {
-    Mailer.sendMail(options);
+    Mailer.sendMail(options).catch(e => {eLog.writeLog("mailer error (Start)", e)});;
 } catch (error) {
-    eLog.writeLog("mailer error", error);
+    eLog.writeLog("mailer error (Start)", error);
 }
