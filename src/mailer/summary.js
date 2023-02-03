@@ -18,7 +18,7 @@ async function prjSummary() {
     return  [[ansCount, (smParams[0] * (smParams[1]!== null ? smParams[1] : 1)) - ansCount], [townSummary, [smParams[0], smParams[1] !== null ? smParams[1] : 1]]];
 }
 
-setInterval(async () => {
+/* setInterval(async () => {
     if(process.env.TSWITCH == "true") {
         try {
             let stats = {
@@ -77,4 +77,4 @@ setInterval(async () => {
             eLog.writeLog("mailer error (Summary)", error);
         }
     }
-}, (process.env.TSEND * 8.64e+7));
+}, (process.env.TSEND * 8.64e+7)); */
